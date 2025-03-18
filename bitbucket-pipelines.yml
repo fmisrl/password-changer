@@ -10,6 +10,16 @@ pipelines:
         script:
           - dotnet build PasswordChanger.sln
     - step:
+        name: Build MSI (WiX)
+        image: mcr.microsoft.com/windows/servercore:ltsc2022
+        script:
+          - choco install wixtoolset -y
+          - cd PasswordChanger.Setup # Assuming your WiX project is in this directory
+          - candle PasswordChanger.wxs
+          - light PasswordChanger.wixobj -out PasswordChanger.msi
+        artifacts:
+          - PasswordChanger.Setup/PasswordChanger.msi
+    - step:
         name: Sync GitHub Mirror
         image: atlassian/default-image:4
         clone:
