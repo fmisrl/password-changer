@@ -6,6 +6,10 @@ clone:
 pipelines:
   default:
     - step:
+        name: Build
+        script:
+          - dotnet build PasswordChanger.sln
+    - step:
         name: Sync GitHub Mirror
         image: atlassian/default-image:4
         clone:
