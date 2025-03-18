@@ -8,7 +8,7 @@ pipelines:
     - step:
         name: Build
         script:
-          - dotnet build PasswordChanger.sln
+          - dotnet build PasswordChanger.sln -r win-x64
     - step:
         name: Sync GitHub Mirror
         image: atlassian/default-image:4
