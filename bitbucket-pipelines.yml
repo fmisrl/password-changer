@@ -4,10 +4,8 @@ pipelines:
   default:
     - step:
         name: Sync GitHub Mirror
-        image: alpine/git:latest
-        clone:
-          enabled: false
+        image: atlassian/default-image:4
         script:
-          - git clone --bare git@bitbucket.org:fmisrl/password-changer.git
-          - cd password-changer.git
+          - ls -al
+          - cd password-changer
           - git push --mirror git@github.com:fmisrl/password-changer.git
