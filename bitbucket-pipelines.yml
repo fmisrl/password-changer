@@ -6,6 +6,4 @@ pipelines:
         name: Sync GitHub Mirror
         image: atlassian/default-image:4
         script:
-          - ls -al
-          - cd password-changer
           - git push --mirror git@github.com:fmisrl/password-changer.git
