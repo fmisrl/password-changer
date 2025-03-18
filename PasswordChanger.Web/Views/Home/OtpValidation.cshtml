@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "OTP Validation";
+}
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PasswordChanger.Web.Consts
+
+@inject IViewLocalizer Localizer
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow p-4 mx-auto mt-5" style="max-width: 320px;">
+                <div>
+                    <h3 class="mb-3 text-center">@Localizer["Title"]</h3>
+                    @if (!string.IsNullOrEmpty(Context.Session.GetString(Session.SessionKeyEmail)))
+                    {
+                        var email = @Context.Session.GetString(Session.SessionKeyEmail);
+                        <p class="text-success">@Localizer["SentOtp", email!]</p>
+                    }
+                </div>
+                <form id="submitOtpValidationForm" asp-action="OtpValidation" method="post">
+                    <div class="mb-3">
+                        <label for="otp" class="form-label">@Localizer["OtpLabel"]</label>
+                        <input type="text" name="otp" class="form-control" id="otp" placeholder="@Localizer["OtpPlaceholder"]" required>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="All"></div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input type="submit" value="@Localizer["SendRequest"]" class="btn btn-primary mt-3"/>
+                    </div>
+                </form>
+            </div>
+            <!--<p class="text-center text-muted mt-3">© 2023 FMI S.r.l. | <a href="#">Privacy Policy</a></p>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PasswordChanger.Web.Consts
+
+@inject IViewLocalizer Localizer
+
+@model PasswordChanger.Web.Models.User
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow p-4 mx-auto mt-5" style="max-width: 320px;">
+                @if (!string.IsNullOrEmpty(Context.Session.GetString(Session.SessionKeyError)))
+                {
+                    <div class="alert alert-danger">
+                        @Context.Session.GetString(Session.SessionKeyError)
+                        @{ Context.Session.Remove(Session.SessionKeyError); }
+                    </div>
+                }
+                <div>
+                    <!--<img src="logo.png" alt="Logo" class="mb-3" style="width: 80px;">-->
+                    <h3 class="mb-3 text-center">@Localizer["Title"]</h3>
+                    <p class="text-muted">@Localizer["InsertUsername"]</p>
+                </div>
+                <form id="submitResetPasswordForm" asp-action="Index" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">@Localizer["UsernameLabel"]</label>
+                        <input type="text" name="Username" class="form-control" id="username" placeholder="@Localizer["UsernamePlaceholder"]" required>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="All"></div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input type="submit" value="@Localizer["SendRequest"]" class="btn btn-primary mt-3"/>
+                    </div>
+                </form>
+            </div>
+            <!--<p class="text-center text-muted mt-3">© 2023 FMI S.r.l. | <a href="#">Privacy Policy</a></p>-->
+        </div>
+    </div>
+</div>

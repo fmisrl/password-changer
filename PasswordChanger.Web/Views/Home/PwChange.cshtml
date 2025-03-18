@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Cambia Password";
+}
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow p-4 mx-auto mt-5" style="max-width: 320px;">
+                <div>
+                    <h3 class="mb-3 text-center">@Localizer["Title"]</h3>
+                    <p class="text-muted">@Localizer["InsertPassword"]</p>
+                </div>
+                <form id="submitResetPasswordForm" asp-action="PwChange" method="post">
+                    <!--<div class="mb-3">
+                        <label for="otp" class="form-label">OTP</label>
+                        <input type="text" name="otp" class="form-control" id="otp" placeholder="Inserisci l'OTP" required>
+                    </div>-->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">@Localizer["NewPasswordLabel"]</label>
+                        <div class="input-group">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="@Localizer["NewPasswordPlaceholder"]" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">@Localizer["ConfirmPasswordLabel"]</label>
+                        <div class="input-group">
+                            <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="@Localizer["ConfirmPasswordPlaceholder"]" required>
+                            <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-danger" asp-validation-summary="All"></div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input type="submit" value="@Localizer["ChangePassword"]" class="btn btn-primary mt-3"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("togglePassword").addEventListener("click", function () {
+        let passwordField = document.getElementById("password");
+        let icon = this.querySelector("i");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+        }
+    });
+    document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+        let passwordField = document.getElementById("confirmPassword");
+        let icon = this.querySelector("i");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+        }
+    });
+</script>
