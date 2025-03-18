@@ -2,55 +2,12 @@
 
 pipelines:
   default:
-    - step: &build-service
-        name: Build Password Changer Service and Installer
-        runs-on:
-          - self.hosted
-          - linux
-        services:
-          - docker
-        size: 2x
-        caches:
-          - dotnetcore
+    - step:
+        name: Sync GitHub Mirror
+        image: alpine/git:latest
+        clone:
+          enabled: false
         script:
-          - dotnet tool install --tool-path . wix
-          - dotnet add package WixToolset.UI.wixext --version 5.0.2
-          - dotnet restore PasswordChanger.sln
-          - dotnet build PasswordChanger.sln --no-restore --configuration Release
-    - step: &publish-password-changer-web
-        name: Publish PasswordChanger.Web
-        runs-on:
-          - self.hosted
-          - linux
-        script:
-          - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
-    - step: &build-password-changer-installer
-        name: Build PasswordChangerInstaller
-        script:
-          - ./wix/wix build -ext WixToolset.UI.wixext.dll PasswordChangerInstaller/PasswordChangerInstaller.wxs
-        artifacts:
-          - PasswordChangerInstaller.msi
-    - step: &build-docker
-        name: Build Docker image
-        runs-on: 
-          - self.hosted
-          - linux
-        services:
-          - docker
-        size: 2x
-        script:
-          - docker info
-          - docker login -u "_json_key_base64" -p "$GCP_DOCKER_SERVICE_KEY" $DOCKER_REGISTRY_URL
-
-          - docker pull "$DOCKER_REGISTRY_IMAGE_TAG:latest" || true
-          - docker build -t "$DOCKER_REGISTRY_IMAGE_TAG:latest" .
-          - docker push "$DOCKER_REGISTRY_IMAGE_TAG" --all-tags
-    - step: &test-installer
-        name: Test Installer
-        runs-on:
-          - self.hosted
-          - linux
-        services:
-          - docker
-        script:
-          - msiexec /i PasswordChangerInstaller.msi /quiet
+          - git clone --bare git@bitbucket.org:fmisrl/password-changer.git
+          - cd password-changer.git
+          - git push --mirror git@github.com:fmisrl/password-changer.git
