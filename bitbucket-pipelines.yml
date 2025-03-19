@@ -11,7 +11,7 @@ pipelines:
           - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
     - step:
         name: Build MSI (WiX)
-        image: jkroepke/wixtoolset:latest
+        image: jkroepke/wixtoolset
         script:
           - cd PasswordChanger.Installer
           - candle.exe PasswordChanger.wxs -ext WixToolset.UI.wixext
