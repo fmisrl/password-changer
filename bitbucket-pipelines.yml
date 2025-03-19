@@ -11,11 +11,12 @@ pipelines:
           - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
     - step:
         name: Build MSI (WiX)
-        image: jkroepke/wixtoolset
+        image: felfert/wix:latest
         script:
+          - docker run --rm felfert/wix mkhostwrappers | sh
           - cd PasswordChanger.Installer
-          - candle.exe PasswordChanger.wxs -ext WixToolset.UI.wixext
-          - light.exe PasswordChanger.wixobj -o PasswordChanger.msi -ext WixToolset.UI.wixext
+          - candle.exe PasswordChangerInstaller.wxs -ext WixToolset.UI.wixext
+          - light.exe PasswordChangerInstaller.wixobj -o PasswordChangerInstaller.msi -ext WixToolset.UI.wixext
         artifacts:
           - PasswordChanger.Installer/PasswordChanger.msi
     - step:
