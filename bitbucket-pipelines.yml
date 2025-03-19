@@ -13,7 +13,7 @@ pipelines:
         name: Build MSI (WiX)
         image: docker:20.10.16
         script:
-          - apk update && apk install -y wine zip
+          - apk update && apk add wine zip
           - wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip
           - unzip wix311-binaries.zip
           - wine candle.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wxs
