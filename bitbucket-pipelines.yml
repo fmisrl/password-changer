@@ -11,13 +11,11 @@ pipelines:
           - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
     - step:
         name: Build MSI (WiX)
-        image: docker:20.10.16
+        image: jkroepke/wixtoolset:latest
         script:
-          - apk update && apk add wine zip
-          - wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip
-          - unzip wix311-binaries.zip
-          - wine candle.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wxs
-          - wine light.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wixobj -out $(pwd)/PasswordChanger.Installer/PasswordChanger.msi -sval
+          - cd PasswordChanger.Installer
+          - candle.exe PasswordChanger.wxs -ext WixToolset.UI.wixext
+          - light.exe PasswordChanger.wixobj -o PasswordChanger.msi -ext WixToolset.UI.wixext
         artifacts:
           - PasswordChanger.Installer/PasswordChanger.msi
     - step:
