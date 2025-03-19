@@ -8,7 +8,12 @@ pipelines:
     - step:
         name: Build .NET Web
         script:
-          - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
+          - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release --no-restore
+    - step:
+        name: Install Docker
+        image: docker:20.10.16
+        script:
+          - echo "Docker Installed"
     - step:
         name: Build MSI (WiX)
         image: dactiv/wix
