@@ -6,27 +6,20 @@ clone:
 pipelines:
   default:
     - step:
-          name: Sync GitHub Mirror
-          image: atlassian/default-image:4
-          clone:
-            enabled: false
-          script:
-            - git clone --bare git@bitbucket.org:fmisrl/password-changer.git
-            - cd password-changer.git
-            - git push --mirror git@github.com:fmisrl/password-changer.git
-    - step:
-        name: Build .NET Web
+        name: Build
+        runs-on:
+          - self-hosted
+          - windows
+        caches:
+          - dotnetcore
         script:
-          - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
+          - dotnet build PasswordChanger.sln
     - step:
-        name: Build MSI (WiX)
-        image: felfert/wix:latest
-        services:
-          - docker
+        name: Sync GitHub Mirror
+        image: atlassian/default-image:4
+        clone:
+          enabled: false
         script:
-          - docker run --rm felfert/wix mkhostwrappers | sh
-          - cd PasswordChanger.Installer
-          - candle PasswordChangerInstaller.wxs
-          - light -sval PasswordChangerInstaller.wixobj -o PasswordChangerInstaller.msi
-        artifacts:
-          - PasswordChanger.Installer/PasswordChanger.msi
+          - git clone --bare git@bitbucket.org:fmisrl/password-changer.git
+          - cd password-changer.git
+          - git push --mirror git@github.com:fmisrl/password-changer.git
