@@ -13,8 +13,13 @@ pipelines:
         name: Build MSI (WiX)
         image: docker:20.10.16
         script:
-          - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/PasswordChanger.Installer:/wix dactiv/wix wine candle.exe /wix/PasswordChanger.wxs
-          - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/PasswordChanger.Installer:/wix dactiv/wix wine light.exe /wix/PasswordChanger.wixobj -out /wix/PasswordChanger.msi -sval
+          - apt-get update && apt-get install -y wine zip
+          - wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip
+          - unzip wix311-binaries.zip
+          - wine msiexec /i wix311.msi /qn
+          - export PATH="$PATH:/root/.wine/drive_c/Program Files (x86)/WiX Toolset v3.11/bin/"
+          - wine candle.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wxs
+          - wine light.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wixobj -out $(pwd)/PasswordChanger.Installer/PasswordChanger.msi -sval
         artifacts:
           - PasswordChanger.Installer/PasswordChanger.msi
     - step:
