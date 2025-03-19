@@ -10,15 +10,19 @@ pipelines:
         script:
           - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
     - step:
-        name: Build MSI (WiX)
+        name: Generate WiX Wrapper Scripts
         image: felfert/wix:latest
         script:
           - docker run --rm felfert/wix mkhostwrappers | sh
+    - step:
+        name: Build MSI (WiX)
+        image: felfert/wix:latest
+        script:
           - cd PasswordChanger.Installer
-          - candle.exe PasswordChangerInstaller.wxs -ext WixToolset.UI.wixext
-          - light.exe PasswordChangerInstaller.wixobj -o PasswordChangerInstaller.msi -ext WixToolset.UI.wixext
+          - candle PasswordChangerInstaller.wxs -ext WixToolset.UI.wixext
+          - light PasswordChangerInstaller.wixobj -o PasswordChangerInstaller.msi -ext WixToolset.UI.wixext
         artifacts:
-          - PasswordChanger.Installer/PasswordChanger.msi
+          - PasswordChanger.Installer/PasswordChangerInstaller.msi
     - step:
         name: Sync GitHub Mirror
         image: atlassian/default-image:4
