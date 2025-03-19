@@ -17,9 +17,8 @@ pipelines:
         script:
           - docker run --rm felfert/wix mkhostwrappers | sh
           - cd PasswordChanger.Installer
-          - find / -name WixToolset.UI.wixext
-          - candle PasswordChangerInstaller.wxs -ext WixToolset.UI.wixext
-          - light PasswordChangerInstaller.wixobj -o PasswordChangerInstaller.msi -ext WixToolset.UI.wixext
+          - candle PasswordChangerInstaller.wxs
+          - light -sval PasswordChangerInstaller.wixobj -o PasswordChangerInstaller.msi
         artifacts:
           - PasswordChanger.Installer/PasswordChanger.msi
     - step:
