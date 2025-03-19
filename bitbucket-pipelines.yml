@@ -12,12 +12,15 @@ pipelines:
     - step:
         name: Build MSI (WiX)
         image: docker:20.10.16
+
         script:
-          - apt-get update && apt-get install -y wine zip
-          - wget https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip
-          - unzip wix311-binaries.zip
-          - wine msiexec /i wix311.msi /qn
-          - export PATH="$PATH:/root/.wine/drive_c/Program Files (x86)/WiX Toolset v3.11/bin/"
+          - apk update && apk add wine zip wget
+          - wget https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
+          - chmod +x dotnet-install.sh
+          - ./dotnet-install.sh -c 9.0
+          - export PATH="$PATH:$HOME/.dotnet"
+          - dotnet tool install --global wix --version 5.0.2
+          - export PATH="$PATH:$HOME/.dotnet/tools"
           - wine candle.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wxs
           - wine light.exe $(pwd)/PasswordChanger.Installer/PasswordChanger.wixobj -out $(pwd)/PasswordChanger.Installer/PasswordChanger.msi -sval
         artifacts:
