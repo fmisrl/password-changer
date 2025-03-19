@@ -22,6 +22,5 @@ pipelines:
         caches:
           - dotnetcore
         script:
-          - tree
-          - dotnet build PasswordChanger.sln
-          - tree
+          - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
+          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --configuration Release
