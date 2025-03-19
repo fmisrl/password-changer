@@ -10,13 +10,8 @@ pipelines:
         script:
           - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
     - step:
-        name: Install Docker
-        image: docker:20.10.16
-        script:
-          - echo "Docker Installed"
-    - step:
         name: Build MSI (WiX)
-        image: dactiv/wix
+        image: docker:20.10.16
         script:
           - docker run --rm -v $(pwd)/PasswordChanger.Installer:/wix dactiv/wix wine candle.exe /wix/PasswordChanger.wxs
           - docker run --rm -v $(pwd)/PasswordChanger.Installer:/wix dactiv/wix wine light.exe /wix/PasswordChanger.wixobj -out /wix/PasswordChanger.msi -sval
