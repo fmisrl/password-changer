@@ -8,7 +8,7 @@ pipelines:
     - step:
         name: Build .NET Web
         script:
-          - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release --no-restore
+          - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
     - step:
         name: Build MSI (WiX)
         image: dactiv/wix
