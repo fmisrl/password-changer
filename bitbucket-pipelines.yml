@@ -22,4 +22,6 @@ pipelines:
         caches:
           - dotnetcore
         script:
-          - dotnet build PasswordChanger.sln --configuration Release
+          - ls -lR
+          - dotnet build PasswordChanger.sln
+          - ls -lR
