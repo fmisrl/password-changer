@@ -22,6 +22,7 @@ pipelines:
         caches:
           - dotnetcore
         script:
+          - dotnet tool install --global wix --version 5.0.2
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
           - tree /f
           - tree $env:USERPROFILE\.nuget\packages
