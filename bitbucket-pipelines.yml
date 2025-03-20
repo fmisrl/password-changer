@@ -24,6 +24,9 @@ pipelines:
         script:
           - dotnet restore PasswordChanger.Web/PasswordChanger.Web.csproj
           - tree /f
+          - tree $env:USERPROFILE\.nuget\packages
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
           - tree /f
+          - tree $env:USERPROFILE\.nuget\packages
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --configuration Release
+          - tree $env:USERPROFILE\.nuget\packages
