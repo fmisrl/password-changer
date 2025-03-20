@@ -23,4 +23,5 @@ pipelines:
           - dotnetcore
         script:
           - dotnet build PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
+          - tree
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --configuration Release
