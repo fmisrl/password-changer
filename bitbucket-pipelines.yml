@@ -23,6 +23,7 @@ pipelines:
           - Get-ChildItem .\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\ -Recurse
           - tree /f
           - dotnet tool install --global wix --version 5.0.2
+          - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
           - tree /f
           - tree $env:USERPROFILE
