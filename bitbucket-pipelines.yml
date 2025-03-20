@@ -22,10 +22,6 @@ pipelines:
         caches:
           - dotnetcore
         script:
-          - Get-ChildItem  -Recurse -Filter "jquery.validate.unobtrusive.js"
-          - dotnet restore PasswordChanger.Web/PasswordChanger.Web.csproj
-          - tree /f
-          - Get-ChildItem  -Recurse -Filter "jquery.validate.unobtrusive.js"
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
           - tree /f
           - Get-ChildItem  -Recurse -Filter "jquery.validate.unobtrusive.js"
