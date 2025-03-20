@@ -24,7 +24,6 @@ pipelines:
         script:
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
           - tree /f
-          - Get-ChildItem  -Recurse -Filter "jquery.validate.unobtrusive.js"
           - tree $env:USERPROFILE\.nuget\packages
           - tree $env:USERPROFILE
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
