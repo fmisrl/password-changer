@@ -25,7 +25,7 @@ pipelines:
           - dotnet tool install --global wix --version 5.0.2
           - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --configuration Release
-          - Copy-Item -Path ".\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\*" Destination ".\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive" -Recurse -Force
+          - Copy-Item -Path ".\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\*" -Destination ".\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive" -Recurse -Force
           - tree /f
           - tree $env:USERPROFILE
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
