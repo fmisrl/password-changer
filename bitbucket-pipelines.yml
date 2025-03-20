@@ -19,7 +19,6 @@ pipelines:
         runs-on:
           - self.hosted
           - windows
-        size: 2x
         caches:
           - dotnetcore
         script:
