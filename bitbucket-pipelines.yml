@@ -20,8 +20,6 @@ pipelines:
           - self.hosted
           - windows
         script:
-          - dotnet tool install --global wix --version 5.0.2
-          - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
           - tree /f
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
