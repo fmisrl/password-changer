@@ -26,9 +26,9 @@ pipelines:
           - dotnet restore PasswordChanger.Web/PasswordChanger.Web.csproj
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
           - tree $env:USERPROFILE
-          - $wixPath = Join-Path $env:USERPROFILE ".dotnet/tools/wix.exe"
+          - $wixPath = Join-Path $env:USERPROFILE ".nuget\packages\wixtoolset.sdk\5.0.2\tools\net6.0\wix.dll"
           - $wixExtPath = Join-Path $env:USERPROFILE ".nuget/packages/wixtoolset.ui.wixext/5.0.2/wixext5/WixToolset.UI.wixext.dll"
-          - $wixPath build -ext $wixExtPath .\PasswordChanger.Installer\PasswordChangerInstaller.wxs
+          - dotnet exec $wixPath build -platform x86 -out obj\Debug\PasswordChangerInstaller.msi -ext $wixExtPath .\PasswordChanger.Installer\PasswordChangerInstaller.wxs
           - dotnet restore PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - tree /f
