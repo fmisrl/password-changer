@@ -20,11 +20,11 @@ pipelines:
           - self.hosted
           - windows
         script:
-          - Get-ChildItem .\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\ -Recurse
-          - tree /f
           - dotnet tool install --global wix --version 5.0.2
           - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
+          - tree /f
+          - Get-ChildItem .\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\ -Recurse
           - Copy-Item -Path "PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\*" -Destination "PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive\" -Recurse -Force
           - tree /f
           - tree $env:USERPROFILE
