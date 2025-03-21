@@ -26,7 +26,7 @@ pipelines:
           - dotnet restore PasswordChanger.Web/PasswordChanger.Web.csproj
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
           - tree $env:USERPROFILE
-          - wix.exe "PasswordChanger.Installer\PasswordChanger.wxs" -o "PasswordChanger.Installer\output.msi"
+          - $env:USERPROFILE\.nuget\packages\wixtoolset.sdk\5.0.2\tools\net6.0\wix.dll "PasswordChanger.Installer\PasswordChanger.wxs" -o "PasswordChanger.Installer\output.msi"
           - dotnet restore PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - tree /f
