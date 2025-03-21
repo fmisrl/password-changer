@@ -30,5 +30,3 @@ pipelines:
           - dotnet restore PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - tree /f
-        artifacts:
-          - PasswordChanger.Installer\output.msi
