@@ -25,3 +25,4 @@ pipelines:
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
           - tree /f
           - Get-ChildItem .\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive\ -Recurse | Select-Object *
+          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
