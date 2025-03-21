@@ -24,8 +24,8 @@ pipelines:
           - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
           - tree /f
-          - Get-ChildItem .\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\ -Recurse
-          - Copy-Item -Path ".\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" -Destination ".\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive\dist\" -Recurse -Force
+          - Get-ChildItem .\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive\ -Recurse
+          - Copy-Item -Path ".\PasswordChanger.Web\wwwroot\lib\jquery-validation-unobtrusive\dist\*" -Destination ".\PasswordChanger.Web\bin\Release\net9.0-windows\win-x64\publish\wwwroot\lib\jquery-validation-unobtrusive\dist\" -Recurse -Force
           - tree /f
           - tree $env:USERPROFILE
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
