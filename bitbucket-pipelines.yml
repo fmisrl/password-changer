@@ -28,7 +28,7 @@ pipelines:
           - tree $env:USERPROFILE
           - $wixPath = Join-Path $env:USERPROFILE ".dotnet/tools/wix.exe"
           - $wixExtPath = Join-Path $env:USERPROFILE ".nuget/packages/wixtoolset.ui.wixext/5.0.2/wixext5/WixToolset.UI.wixext.dll"
-          - $wixPath -ext $wixExtPath ".\PasswordChanger.Installer\PasswordChangerInstaller.wxs"
+          - $wixPath build -ext $wixExtPath .\PasswordChanger.Installer\PasswordChangerInstaller.wxs
           - dotnet restore PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - tree /f
