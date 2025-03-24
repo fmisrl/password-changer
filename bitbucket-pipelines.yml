@@ -25,6 +25,7 @@ pipelines:
           - icacls "./" /q /c /t /grant Users:F
           - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --no-restore
+          - Start-Sleep -Seconds 60
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --no-restore
         artifacts:
           - out\**
