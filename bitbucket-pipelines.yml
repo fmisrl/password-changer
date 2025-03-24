@@ -20,15 +20,11 @@ pipelines:
           - self.hosted
           - windows
         script:
-          - tree $env:USERPROFILE
           - dotnet tool install --global wix --version 5.0.2
-          - tree $env:USERPROFILE
-          - dotnet restore PasswordChanger.Web/PasswordChanger.Web.csproj
-          - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
-          - tree $env:USERPROFILE
-          - dotnet restore PasswordChanger.Installer/PasswordChanger.Installer.csproj
-          - tree /f
-          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
-          - tree /f
+
+          - icacls "./" /q /c /t /grant Users:F
+          - dotnet restore
+          - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --no-restore
+          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --no-restore
         artifacts:
           - out\**
