@@ -28,7 +28,7 @@ pipelines:
           - tree $env:USERPROFILE
           - dotnet restore PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - tree /f
-          - dotnet build PasswordChanger.Installer/PasswordChangerInstaller.csproj
+          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj
           - tree /f
         artifacts:
           - out\**
