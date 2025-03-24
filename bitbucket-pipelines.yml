@@ -22,7 +22,6 @@ pipelines:
         script:
           - tree $env:USERPROFILE
           - dotnet tool install --global wix --version 5.0.2
-          - dotnet tool install --global wix --version 6.0.0-rc.2
           - tree $env:USERPROFILE /f
           - dotnet restore PasswordChanger.Web/PasswordChanger.Web.csproj
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj
