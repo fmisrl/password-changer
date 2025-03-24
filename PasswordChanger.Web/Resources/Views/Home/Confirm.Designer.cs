@@ -69,6 +69,15 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string HeaderTitle {
+            get {
+                return ResourceManager.GetString("HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your password has been updated successfully..
         /// </summary>
         internal static string TextSuccess {

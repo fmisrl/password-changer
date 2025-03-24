@@ -21,14 +21,14 @@ namespace PasswordChanger.Web.Resources.Views.Home {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class OtpValidation_it {
+    internal class OtpValidation {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal OtpValidation_it() {
+        internal OtpValidation() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PasswordChanger.Web.Resources.Views.Home.OtpValidation.it", typeof(OtpValidation_it).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PasswordChanger.Web.Resources.Views.Home.OtpValidation", typeof(OtpValidation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,6 +60,15 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Otp validation.
+        /// </summary>
+        internal static string HeaderTitle {
+            get {
+                return ResourceManager.GetString("HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Otp.
         /// </summary>
         internal static string OtpLabel {
@@ -69,7 +78,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inserisci l&apos;otp.
+        ///   Looks up a localized string similar to Insert the otp.
         /// </summary>
         internal static string OtpPlaceholder {
             get {
@@ -78,7 +87,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invia Otp.
+        ///   Looks up a localized string similar to Send Otp.
         /// </summary>
         internal static string SendRequest {
             get {
@@ -87,7 +96,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ti è stata inviata un&apos;email con l&apos;OTP da inserire a {0}.
+        ///   Looks up a localized string similar to An email with the OTP has been sent to you at {0}.
         /// </summary>
         internal static string SentOtp {
             get {
@@ -96,7 +105,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cambio Password.
+        ///   Looks up a localized string similar to Change Password.
         /// </summary>
         internal static string Title {
             get {

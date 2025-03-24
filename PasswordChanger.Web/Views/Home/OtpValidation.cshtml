@@ -1,11 +1,11 @@
-﻿@{
-    ViewData["Title"] = "OTP Validation";
-}
-
-@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using PasswordChanger.Web.Consts
 
 @inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["HeaderTitle"];
+}
 
 <div class="container">
     <div class="row justify-content-center">
@@ -30,7 +30,6 @@
                     </div>
                 </form>
             </div>
-            <!--<p class="text-center text-muted mt-3">© 2023 FMI S.r.l. | <a href="#">Privacy Policy</a></p>-->
         </div>
     </div>
 </div>

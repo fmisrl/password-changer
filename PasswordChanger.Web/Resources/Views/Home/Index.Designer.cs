@@ -60,6 +60,15 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string HeaderTitle {
+            get {
+                return ResourceManager.GetString("HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insert your username to receive the reset instruction.
         /// </summary>
         internal static string InsertUsername {

@@ -1,10 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Password Modificata";
-}
-
-@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 
 @inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["HeaderTitle"];
+}
 
 <div class="container">
     <div class="row justify-content-center">

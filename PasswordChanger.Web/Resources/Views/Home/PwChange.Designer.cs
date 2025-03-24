@@ -21,14 +21,14 @@ namespace PasswordChanger.Web.Resources.Views.Home {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class PwChange_it {
+    internal class PwChange {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal PwChange_it() {
+        internal PwChange() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PasswordChanger.Web.Resources.Views.Home.PwChange.it", typeof(PwChange_it).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PasswordChanger.Web.Resources.Views.Home.PwChange", typeof(PwChange).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,7 +60,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cambia Password.
+        ///   Looks up a localized string similar to Change Password.
         /// </summary>
         internal static string ChangePassword {
             get {
@@ -69,7 +69,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conferma Password.
+        ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         internal static string ConfirmPasswordLabel {
             get {
@@ -78,7 +78,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conferma la nuova password.
+        ///   Looks up a localized string similar to Confirm the new password.
         /// </summary>
         internal static string ConfirmPasswordPlaceholder {
             get {
@@ -87,7 +87,16 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inserisci e conferma la nuova password.
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        internal static string HeaderTitle {
+            get {
+                return ResourceManager.GetString("HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert and confirm the new password.
         /// </summary>
         internal static string InsertPassword {
             get {
@@ -96,7 +105,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nuova Password.
+        ///   Looks up a localized string similar to New Password.
         /// </summary>
         internal static string NewPasswordLabel {
             get {
@@ -105,7 +114,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inserisci la nuova password.
+        ///   Looks up a localized string similar to Insert the new password.
         /// </summary>
         internal static string NewPasswordPlaceholder {
             get {
@@ -114,7 +123,7 @@ namespace PasswordChanger.Web.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cambio Password.
+        ///   Looks up a localized string similar to Change Password.
         /// </summary>
         internal static string Title {
             get {

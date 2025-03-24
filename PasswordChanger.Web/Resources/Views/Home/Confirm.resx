@@ -3,7 +3,7 @@
 <root>
     <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <xsd:element name="root" msdata:IsDataSet="true">
-            
+
         </xsd:element>
     </xsd:schema>
     <resheader name="resmimetype">
@@ -26,5 +26,8 @@
     </data>
     <data name="TitleSuccess" xml:space="preserve">
         <value>Change Password Occurred</value>
+    </data>
+    <data name="HeaderTitle" xml:space="preserve">
+        <value>Confirm</value>
     </data>
 </root>
