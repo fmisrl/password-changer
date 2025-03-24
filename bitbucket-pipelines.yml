@@ -22,10 +22,11 @@ pipelines:
         script:
           - dotnet tool install --global wix --version 5.0.2
 
-          - icacls "./" /q /c /t /grant Users:F
           - dotnet restore
+          - icacls "./" /q /c /t /grant Users:F
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --no-restore
-          - Start-Sleep -Seconds 60
+          - icacls "./" /q /c /t /grant Users:F
+          - Start-Sleep -Seconds 30
           - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --no-restore
         artifacts:
           - out\**
