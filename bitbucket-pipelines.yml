@@ -25,6 +25,6 @@ pipelines:
           - dotnet restore
           - dotnet publish PasswordChanger.Web/PasswordChanger.Web.csproj --no-restore
           - icacls "./" /q /c /t /grant Users:F
-          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --no-restore -v diagnostic
+          - dotnet build PasswordChanger.Installer/PasswordChanger.Installer.csproj --no-restore
         artifacts:
           - out\**
